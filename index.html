@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>LOVE</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+<audio src="/Love/img/MC高迪 - 黑暗萝莉.mp3" id="music" controls="controls" loop="11" hidden="true"></audio>
+<!--文字片段-->
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			<p>十九岁的那一天</p>
+			<p>我来到雅娟的面前</p>
+			<p>为了能和你在这儿遇见</p>
+			<p>我预付了我的五年</p>
+			<p>二十岁的那一天</p>
+			<p>吉他在我身边</p>
+			<p>张开了笨拙的手</p>
+			<p>对你的爱涌上了心头</p>
+			<p>你是我患得患失的梦</p>
+			<p>我是你可有可无的人</p>
+			<p>毕竟这穿越山河的箭</p>
+			<p>刺的都是用情至疾的人</p>
+			<p>你是我辗转反侧的梦</p>
+			<p>我是你如梦山河的故人</p>
+			<p>就让这牵肠挂肚的酒</p>
+			<p>硫酸一样刺激在你我的心头</p>
+			<p>第一次见你的时候</p>
+			<p>闽南姑娘总那么温柔</p>
+			<p>当我羞涩拉起你的手</p>
+			<p>以为你会陪我走到最后</p>
+			<!--
+			<h3 style="color: red">愿得一心人，白头不相离!</h3>
+			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments">*2018—11-24,</span><br />
+			<span class="space"/><span class="comments">*2019-01-05.</span><br />
+			<span class="space"/><span class="comments">*/</span><br />
+			男 孩 名 字 = <span class="keyword">Mr</span> Qin.<br />
+			女 孩 名 字 = <span class="keyword">Mrs</span> Xu.<br />
+			<span class="comments">// If one day.</span><br />
+			如 果 有 一 天 ,<br />
+			<span class="comments">// You married someone else.</span><br />
+			你 嫁 为 人 妻 ,<br />
+			<span class="comments">// Please don't forget !</span><br />
+			请 不 要 忘 记 !<br />
+			<span class="comments">// It's my lifelong dream to marry you !</span><br />
+			娶 你 是 我 毕 生 的 梦 想 ！<br />
+			<span class="comments">// My Queen, Your Majesty, has returned.</span><br />
+			<span class="comments">// This is a lifetime ！</span><br />
+			<span class="keyword">我 的 女 王 殿 下</span><h3 style="color: red"> 臣 ！</h3><span class="keyword"> 退 了 ！</span><br />
+			<span class="keyword">这 一 退 </span> 就 是 <span class="keyword"> 一 辈 子 ！</span><br />
+			<span class="placeholder"/><span class="comments">// From now on the cat tease the dog !</span><br />
+			<span class="placeholder"/><span class="comments">// Never Talk about eternity !</span><br />
+			<span class="placeholder"/><h3 style="color: #00aeef"> 从 此 撩 猫 逗 狗 ! </h3>
+		    <span class="placeholder"/><h3 style="color: #00aeef"> 闭 口 不 谈 天 长 地 久 ! </h3>
+			<br>
+			<br>
+			臣 只 想 说：<br />
+			殿 下  ， 照 顾 好 自 己 ！<br />
+			-->
+		</div>
+		<!--爱心特效-->
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					时间，一直在流逝！
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					人生苦短，彼此珍惜！<br/>
+					<div class="signature">—— Mr.凡先森</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="copyright">
+		<a onclick="plays()">播放背景音乐</a><br />
+		<a onclick="stops()">关闭背景音乐</a><br />
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+function plays(){//播放音乐
+    var music=document.getElementById('music');
+    music.play();
+}
+
+function stops(){//关闭音乐
+    var music=document.getElementById('music');
+    music.pause();
+    music.load();
+}
+
+
+$("#music").hide();//隐藏音乐插件
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2018, 10, 23);/*恋爱开始的天数*/
+together.setHours(20);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+    var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
+
+</body>
+</html>
